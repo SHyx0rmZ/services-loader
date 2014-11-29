@@ -74,7 +74,6 @@ class ServicesLoader
         $loaders[] = new XmlFileLoader($this->container, $locator);
         $loaders[] = new PhpFileLoader($this->container, $locator);
         $loaders[] = new IniFileLoader($this->container, $locator);
-        $loaders[] = new ClosureLoader($this->container);
 
         return new LoaderResolver($loaders);
     }
