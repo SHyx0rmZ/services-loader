@@ -30,13 +30,18 @@ abstract class AbstractServicesLoaderExtension extends Extension
         $path .= DIRECTORY_SEPARATOR . 'config';
         $path .= DIRECTORY_SEPARATOR;
 
+        $file = $path . 'services.' . $this->getExtension();
+        $dir  = $path . 'services.' . $this->getExtension() . '.d';
+
         $loader = new ServicesLoader($container);
-        $loader->loadFromFile(
-            $path . 'services.' . $this->getExtension()
-        );
-        $loader->loadFromDirectory(
-            $path . 'services.' . $this->getExtension() . '.d'
-        );
+
+        if (is_file($file)) {
+            $loader->loadFromFile($file);
+        }
+
+        if (is_dir($dir)) {
+            $loader->loadFromDirectory($dir);
+        }
     }
 
     /**
