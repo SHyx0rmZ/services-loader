@@ -16,35 +16,19 @@ Use ServiceLoader to load service definitions from files in directories (recursi
 
 namespace You\YourBundle\DependencyInjection;
 
-use SHyx0rmZ\ServicesLoader\Extension\YamlServicesLoaderExtension;
+use SHyx0rmZ\ServicesLoader\Extension\ServicesLoaderExtension;
 
-class YourExtension extends YamlServicesLoaderExtension
+class YourExtension extends ServicesLoaderExtension
 {
 }
 ```
 
-This effectively is the same as if you had written:
+Which will  load service definitions from:
 
-```php
-<?php
-
-namespace You\YourBundle\DependencyInjection;
-
-use SHyx0rmZ\ServicesLoader\ServicesLoader;
-
-class YourExtension extends Extension
-{
-  public function load(array $config, ContainerBuilder $container)
-  {
-    $loader = new ServiceLoader($container);
-    $loader->loadFromFile(__DIR__ . '/../Resources/config/services.yml');
-    $loader->loadFromDirectory(__DIR__ . '/../Resources/config/services.yml.d');
-  }
-}
-```
-
-Which will for example load service definitions from:
-
+* YourBundle/Resources/config/services.ini
+* YourBundle/Resources/config/services.php
+* YourBundle/Resources/config/services.xml
 * YourBundle/Resources/config/services.yml
-* YourBundle/Resources/config/services.yml.d/commands.yml
-* YourBundle/Resources/config/services.yml.d/database/clients.yml
+* and everything in services.d
+  * YourBundle/Resources/config/services.d/commands.yml
+  * YourBundle/Resources/config/services.d/database/clients.yml
