@@ -3,7 +3,7 @@
     "type": "library",
     "description": "Easier loading of services.d",
     "keywords": [ "symfony", "services" ],
-    "homepage": "http://github/SHyx0rmZ/services-loader",
+    "homepage": "http://github.com/SHyx0rmZ/services-loader",
     "license": "MIT",
     "authors": [
         {
